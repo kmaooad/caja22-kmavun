@@ -8,6 +8,8 @@ import com.microsoft.azure.functions.HttpStatus;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
+import org.json.*;
+
 
 import java.util.Optional;
 
@@ -29,12 +31,14 @@ public class Function {
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
 
-        final String name = request.getBody().orElse(null);
+        final String bodyJson = request.getBody().orElse(null);
+        JSONObject obj = new JSONObject(bodyJson);
+        Long messageId = obj.getJSONObject("message").getLong("message_id");
 
-        if (name == null) {
+        if (bodyJson == null) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name in the request body").build();
         } else {
-            return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+            return request.createResponseBuilder(HttpStatus.OK).body(messageId).build();
         }
     }
 }
