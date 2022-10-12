@@ -32,13 +32,17 @@ public class Function {
         context.getLogger().info("Java HTTP trigger processed a request.");
 
         final String bodyJson = request.getBody().orElse(null);
-        JSONObject obj = new JSONObject(bodyJson);
-        Long messageId = obj.getJSONObject("message").getLong("message_id");
-
-        if (bodyJson == null) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name in the request body").build();
-        } else {
-            return request.createResponseBuilder(HttpStatus.OK).body(messageId).build();
+        Long messageId;
+        try {
+            JSONObject obj = new JSONObject(bodyJson);
+            messageId = obj.getJSONObject("message").getLong("message_id");
+        } catch (JSONException jse) {
+            return request.createResponseBuilder(HttpStatus.OK).body("Body without JSON").build();
+        } catch (NullPointerException npe) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("This message does not contain body").build();
         }
+
+        return request.createResponseBuilder(HttpStatus.OK).body(messageId).build();
+
     }
 }
