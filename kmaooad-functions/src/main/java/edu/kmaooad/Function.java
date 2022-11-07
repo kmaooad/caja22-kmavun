@@ -15,6 +15,7 @@ import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import edu.kmaooad.mongo.RequestCollection;
 import org.bson.Document;
 import org.json.*;
 
@@ -30,8 +31,9 @@ public class Function {
      * This function listens at endpoint "/api/TelegramWebhook". To invoke it using "curl" command in bash:
      * curl -d "HTTP Body" {your host}/api/TelegramWebhook
      */
+
     @FunctionName("TelegramWebhook")
-    public HttpResponseMessage run(
+    protected HttpResponseMessage run(
             @HttpTrigger(
                     name = "req",
                     methods = {HttpMethod.POST},
@@ -39,27 +41,19 @@ public class Function {
                     HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
-
-
         final String bodyJson = request.getBody().orElse(null);
+
         Long messageId;
         try {
-            ConnectionString connectionString = new ConnectionString("mongodb+srv://admin:0FuzYyhgLsJU6nS9@cluster0.1tup9.mongodb.net/?retryWrites=true&w=majority");
-            MongoClientSettings settings = MongoClientSettings.builder()
-                    .applyConnectionString(connectionString)
-                    .build();
-            MongoClient mongoClient = MongoClients.create(settings);
-            MongoDatabase database = mongoClient.getDatabase("test");
-            MongoCollection<Document> collection = database.getCollection("requests");
-
+            RequestCollection rq = new RequestCollection();
             JSONObject obj = new JSONObject(bodyJson);
             messageId = obj.getJSONObject("message").getLong("message_id");
             HashMap<String, Object> yourHashMap = new Gson().fromJson(obj.toString(), HashMap.class);
-            collection.insertOne(new Document(yourHashMap));
+            rq.addRequest(new Document(yourHashMap));
         } catch (JSONException jse) {
-            return request.createResponseBuilder(HttpStatus.OK).body("Body without JSON").build();
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Invalid JSON structure in body.").build();
         } catch (NullPointerException npe) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("This message does not contain body").build();
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("This message does not contain body.").build();
         }
 
         return request.createResponseBuilder(HttpStatus.OK).body(messageId).build();
