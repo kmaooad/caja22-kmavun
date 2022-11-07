@@ -33,7 +33,7 @@ public class Function {
      */
 
     @FunctionName("TelegramWebhook")
-    protected HttpResponseMessage run(
+    public HttpResponseMessage run(
             @HttpTrigger(
                     name = "req",
                     methods = {HttpMethod.POST},
