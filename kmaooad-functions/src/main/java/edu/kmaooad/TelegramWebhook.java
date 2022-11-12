@@ -17,7 +17,7 @@ import java.util.Optional;
 /**
  * Azure Functions with HTTP Trigger.
  */
-public class TelegramWebhook extends FunctionInvoker<String, Response> {
+public class TelegramWebhook extends FunctionInvoker<Optional<String>, Response> {
     /**
      * This function listens at endpoint "/api/TelegramWebhook". To invoke it using "curl" command in bash:
      * curl -d "HTTP Body" {your host}/api/TelegramWebhook
@@ -33,7 +33,7 @@ public class TelegramWebhook extends FunctionInvoker<String, Response> {
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
         final String body = request.getBody().orElse(null);
-        Response response = handleRequest(body,context);
+        Response response = handleRequest(request.getBody(),context);
         HttpStatus status = response.isOk ? HttpStatus.OK : HttpStatus.BAD_REQUEST;
         return request.createResponseBuilder(status)
                 .body(response.getResponse())

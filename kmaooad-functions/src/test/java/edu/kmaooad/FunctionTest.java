@@ -86,7 +86,7 @@ public class FunctionTest {
                         .apply(invocationOnMock.getArgument(0))
         )
                 .when(handler)
-                .handleRequest(any(String.class), any(ExecutionContext.class));
+                .handleRequest(any(Optional.class), any(ExecutionContext.class));
         return handler;
     }
 
@@ -101,15 +101,14 @@ public class FunctionTest {
         return contextMock;
     }
 
-//    This test is breaking with Optional.empty() due to some unknown magical reasons
-//    @Test
-//    public void testEmptyBody() {
-//        // Invoke
-//        final HttpResponseMessage ret = getHandler().run(mockRequest(Optional.empty()) , mockContext());
-//        // Verify
-//        assertEquals(HttpStatus.BAD_REQUEST, ret.getStatus());
-//        assertEquals(ret.getBody(),NO_BODY_MSG);
-//    }
+    @Test
+    public void testEmptyBody() {
+        // Invoke
+        final HttpResponseMessage ret = getHandler().run(mockRequest(Optional.empty()) , mockContext());
+        // Verify
+        assertEquals(HttpStatus.BAD_REQUEST, ret.getStatus());
+        assertEquals(ret.getBody(),NO_BODY_MSG);
+    }
 
     @Test
     public void testInvalidBody() {

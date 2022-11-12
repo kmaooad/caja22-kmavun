@@ -10,19 +10,21 @@ import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 @Component
-public class RequestHandler implements Function<String, Response> {
+public class RequestHandler implements Function<Optional<String>, Response> {
 
     @Autowired
     private RequestService reqServ;
 
     @Override
-    public Response apply(String botMsg) {
+    public Response apply(Optional<String> request) {
+        final String body = request.orElse(null);
         Message msg;
         try {
-            msg = MessageParser.parseJsonString(botMsg);
+            msg = MessageParser.parseJsonString(body);
         } catch (JSONException jse) {
             return new Response("Invalid JSON structure in body.");
         } catch (NullPointerException npe) {
