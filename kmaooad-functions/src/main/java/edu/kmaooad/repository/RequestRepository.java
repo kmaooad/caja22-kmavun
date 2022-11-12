@@ -1,9 +1,10 @@
 package edu.kmaooad.repository;
 
-import org.bson.Document;
+import edu.kmaooad.model.Message;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-
-public interface RequestRepository {
-    void addRequest(Document doc);
+@Repository
+public interface RequestRepository extends MongoRepository<Message, String> {
+    //
 }
