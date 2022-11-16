@@ -34,7 +34,7 @@ public class TelegramWebhook extends FunctionInvoker<Optional<String>, Response>
         context.getLogger().info("Java HTTP trigger processed a request.");
         final String body = request.getBody().orElse(null);
         Response response = handleRequest(request.getBody(),context);
-        HttpStatus status = response.isOk ? HttpStatus.OK : HttpStatus.BAD_REQUEST;
+        HttpStatus status = response.isOk() ? HttpStatus.OK : HttpStatus.BAD_REQUEST;
         return request.createResponseBuilder(status)
                 .body(response.getResponse())
                 .build();

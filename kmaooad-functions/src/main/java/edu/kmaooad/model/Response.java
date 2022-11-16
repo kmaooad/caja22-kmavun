@@ -1,10 +1,12 @@
 package edu.kmaooad.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+@Data
 public class Response {
 
-    public boolean isOk;
+    private boolean isOk;
     private Long messageId;
     private String errorMessage;
 

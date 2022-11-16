@@ -3,7 +3,7 @@ package edu.kmaooad.handlers;
 
 import com.microsoft.azure.functions.HttpStatus;
 import edu.kmaooad.model.Message;
-import edu.kmaooad.model.MessageParser;
+import edu.kmaooad.utils.MessageParser;
 import edu.kmaooad.model.Response;
 import edu.kmaooad.service.RequestService;
 import org.json.JSONException;
