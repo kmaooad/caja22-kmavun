@@ -1,8 +1,7 @@
-package edu.kmaooad.model;
+package edu.kmaooad.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 @Data
 public class Response {
 

@@ -1,10 +1,9 @@
 package edu.kmaooad.handlers;
 
 
-import com.microsoft.azure.functions.HttpStatus;
-import edu.kmaooad.model.Message;
+import edu.kmaooad.models.Message;
 import edu.kmaooad.utils.MessageParser;
-import edu.kmaooad.model.Response;
+import edu.kmaooad.models.Response;
 import edu.kmaooad.service.RequestService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
