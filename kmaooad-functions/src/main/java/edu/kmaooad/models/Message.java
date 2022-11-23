@@ -11,6 +11,4 @@ public class Message {
 
     private Long messageId;
     private String text;
-
-
 }

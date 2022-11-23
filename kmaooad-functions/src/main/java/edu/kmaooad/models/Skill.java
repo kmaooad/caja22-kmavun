@@ -13,28 +13,4 @@ public class Skill {
     private String skillName;
     @DBRef
     private Skill parentSkill;
-
-    public String getSkillID() {
-        return skillID;
-    }
-
-    public void setSkillID(String skillID) {
-        this.skillID = skillID;
-    }
-
-    public String getSkillName() {
-        return skillName;
-    }
-
-    public void setSkillName(String skillName) {
-        this.skillName = skillName;
-    }
-
-    public Skill getParentSkill() {
-        return parentSkill;
-    }
-
-    public void setParentSkill(Skill parentSkill) {
-        this.parentSkill = parentSkill;
-    }
 }

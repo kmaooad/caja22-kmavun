@@ -14,20 +14,4 @@ public class Group {
     private String name;
     @DBRef
     private Set<Project> competences;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<Project> getCompetences() {
-        return competences;
-    }
-
-    public void setCompetences(Set<Project> competences) {
-        this.competences = competences;
-    }
 }
