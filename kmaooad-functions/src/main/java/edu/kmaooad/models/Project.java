@@ -22,5 +22,5 @@ public class Project {
     @DBRef
     private Set<Student> students;
     @DBRef
-    private Set<Activity> activities;
+    private Activity activity;
 }
