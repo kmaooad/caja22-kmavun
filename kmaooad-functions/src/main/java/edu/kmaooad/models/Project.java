@@ -10,17 +10,12 @@ import java.util.Set;
 @Document("projects")
 public class Project {
     @Id
-    private String projectID;
-    private String projectTitle;
-    private String projectDescription;
-    @DBRef
-    private Topic topic;
-    @DBRef
-    private Set<Skill> skills;
-    @DBRef
-    private Set<SkillSet> skillSets;
-    @DBRef
-    private Set<Student> students;
-    @DBRef
-    private Activity activity;
+    private String id;
+
+    private String title;
+    private String description;
+    private String topicId;
+    private Set<String> skills;
+    private Set<String> skillSets;
+    private String activity_id;
 }

@@ -13,6 +13,5 @@ public class SkillSet {
     @Id
     private String skillSetID;
     private String skillSetName;
-    @DBRef
-    private Set<SkillSet> skillSet;
+    private Set<String> skills;
 }

@@ -11,7 +11,8 @@ import java.util.Set;
 @Document("groups")
 public class Group {
     @Id
+    private String id;
+
     private String name;
-    @DBRef
-    private Set<Project> competences;
+    private Set<String> students;
 }

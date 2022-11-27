@@ -11,6 +11,5 @@ public class Skill {
     @Id
     private String skillID;
     private String skillName;
-    @DBRef
-    private Skill parentSkill;
+    private String parentSkill;
 }

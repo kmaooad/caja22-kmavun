@@ -10,9 +10,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Activity {
     @Id
     private String id;
+
     private String name;
     private Enum<Status> status;
-    private String group;
+    private String group_id;
     private String dep;
     private String org;
 }
