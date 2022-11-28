@@ -9,7 +9,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("skills")
 public class Skill {
     @Id
-    private String skillID;
-    private String skillName;
-    private String parentSkill;
+    private String id;
+
+    private String name;
+
+    @DBRef
+    private Skill parentSkill;
 }

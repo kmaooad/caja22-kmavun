@@ -4,7 +4,8 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.util.Set;
+
+import java.util.List;
 
 @Data
 @Document("projects")
@@ -14,8 +15,10 @@ public class Project {
 
     private String title;
     private String description;
-    private String topicId;
-    private Set<String> skills;
-    private Set<String> skillSets;
-    private String activity_id;
+
+    @DBRef
+    private Topic topic;
+
+    @DBRef
+    private List<Skill> skills;
 }

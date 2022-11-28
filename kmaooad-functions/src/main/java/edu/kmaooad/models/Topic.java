@@ -9,8 +9,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("topics")
 public class Topic {
     @Id
-    private String topicID;
+    private String id;
 
-    private String topicName;
-    private String parentTopic;
+    private String name;
+
+    @DBRef
+    private Topic parentTopic;
 }

@@ -2,7 +2,10 @@ package edu.kmaooad.models;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 @Data
 @Document("students")
@@ -13,9 +16,14 @@ public class Student {
     private String email;
     private String firstName;
     private String lastName;
-    private String patronym;
-    private String groupId;
+    private String patronymic;
+
+    @DBRef
+    private Group group;
+
     private String dep;
     private String org;
-    private Set<String> projects;
+
+    @DBRef
+    private List<Activity> activities;
 }
