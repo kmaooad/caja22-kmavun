@@ -1,5 +1,6 @@
 package edu.kmaooad.models;
 
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -8,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
 @Data
+@Builder
 @Document("students")
 public class Student {
     @Id
@@ -26,4 +28,6 @@ public class Student {
 
     @DBRef
     private List<Activity> activities;
+
+    private List<Skill> skills;
 }
