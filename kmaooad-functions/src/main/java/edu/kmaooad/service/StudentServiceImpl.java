@@ -1,18 +1,26 @@
 package edu.kmaooad.service;
 
 import edu.kmaooad.dto.StudentFilterDTO;
+import edu.kmaooad.models.Skill;
 import edu.kmaooad.models.Student;
+import edu.kmaooad.repository.SkillRepository;
 import edu.kmaooad.repository.StudentRepository;
-import edu.kmaooad.service.StudentService;
-import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static org.springframework.util.CollectionUtils.*;
+
+@Service
 public class StudentServiceImpl implements StudentService {
-    private final StudentRepository studentRepository;
 
-    public StudentServiceImpl(StudentRepository studentRepository) {
+    private final StudentRepository studentRepository;
+    private final SkillRepository skillRepository;
+
+    public StudentServiceImpl(StudentRepository studentRepository, SkillRepository skillRepository) {
         this.studentRepository = studentRepository;
+        this.skillRepository = skillRepository;
     }
 
     @Override
@@ -27,6 +35,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> searchStudents(StudentFilterDTO filter) {
+        if (isEmpty(filter.getSkillIds()) && !isEmpty(filter.getSkillNames())) {
+            final var skillIds = skillRepository.findByNameIn(filter.getSkillNames()).stream()
+                    .map(Skill::getId)
+                    .collect(Collectors.toList());
+            filter.setSkillIds(skillIds);
+        }
         return studentRepository.search(filter);
     }
 

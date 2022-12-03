@@ -1,6 +1,5 @@
 package edu.kmaooad.repository;
 
-import edu.kmaooad.models.Group;
 import edu.kmaooad.models.Student;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
