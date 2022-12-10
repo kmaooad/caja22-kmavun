@@ -1,6 +1,7 @@
 package edu.kmaooad.models;
 
 import edu.kmaooad.enums.Status;
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -9,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
 @Data
+@Builder
 @Document("activities")
 public class Activity {
     @Id
@@ -16,7 +18,7 @@ public class Activity {
 
     private String name;
     private Enum<Status> status;
-    private List<Project> projects;
+    private List<String> skills;
 
     @DBRef
     private Group group;

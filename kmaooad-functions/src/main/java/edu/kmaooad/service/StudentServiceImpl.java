@@ -1,7 +1,6 @@
 package edu.kmaooad.service;
 
 import edu.kmaooad.dto.StudentFilterDTO;
-import edu.kmaooad.models.Skill;
 import edu.kmaooad.models.Student;
 import edu.kmaooad.repository.SkillRepository;
 import edu.kmaooad.repository.StudentRepository;

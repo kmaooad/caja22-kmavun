@@ -28,7 +28,4 @@ public class Student {
 
     @DBRef
     private List<Activity> activities;
-
-    // ids of skills
-    private List<String> skills;
 }
