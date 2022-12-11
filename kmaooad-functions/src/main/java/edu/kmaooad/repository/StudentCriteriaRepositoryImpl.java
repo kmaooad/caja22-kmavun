@@ -20,6 +20,7 @@ public class StudentCriteriaRepositoryImpl implements StudentCriteriaRepository 
 	private static final String DEP = "dep";
 	private static final String GROUP = "group";
 	private static final String SKILLS = "skills";
+	private static final String ACTIVITIES = "activities";
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
@@ -37,7 +38,8 @@ public class StudentCriteriaRepositoryImpl implements StudentCriteriaRepository 
 				CriteriaUtil.getCriteriaByNotBlankString(GROUP, filter.getGroup())
 		);
 
-		final var listCriterias = CriteriaUtil.getCriteriasByPresenceInList(SKILLS, filter.getSkillIds());
+//		final var listCriteriasOld = CriteriaUtil.getCriteriasByPresenceInList(SKILLS, filter.getSkills());
+		final var listCriterias = CriteriaUtil.getCriteriasActivities(filter.getActivities());
 
 		final var criterias = Stream.concat(primitiveCriterias.stream(), listCriterias.stream())
 				.toArray(Criteria[]::new);

@@ -3,6 +3,7 @@ package edu.kmaooad;
 import edu.kmaooad.dto.StudentFilterDTO;
 import edu.kmaooad.models.Group;
 import edu.kmaooad.models.Student;
+import edu.kmaooad.models.Activity;
 import edu.kmaooad.repository.StudentCriteriaRepository;
 import edu.kmaooad.repository.StudentCriteriaRepositoryImpl;
 import edu.kmaooad.repository.StudentRepository;
@@ -26,11 +27,22 @@ public class OoadSpringApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        Activity a1 = Activity.builder()
+                .id("1")
+                .name("Football")
+                .skills(List.of("Python"))
+                .build();
+
+        Activity a2 = Activity.builder()
+                .id("2")
+                .name("Basketball")
+                .skills(List.of("Java"))
+                .build();
         Student student1 = Student.builder()
                 .id("1")
                 .dep("FI")
                 .firstName("Yarema")
-                .skills(List.of("Rust", "Python"))
+                .activities(List.of(a1))
                 .email("yaremamed@gmail.com")
                 .build();
         studentRepository.save(student1);
@@ -38,7 +50,7 @@ public class OoadSpringApplication implements CommandLineRunner {
                 .id("2")
                 .dep("FI")
                 .firstName("Nikmas")
-                .skills(List.of("Java", "C++"))
+                .activities(List.of(a2))
                 .email("nikmasdev@gmail.com")
                 .build();
         studentRepository.save(student2);
@@ -46,7 +58,7 @@ public class OoadSpringApplication implements CommandLineRunner {
                 .id("3")
                 .dep("FI")
                 .firstName("Yaroslav")
-                .skills(List.of("Python", "Java"))
+                .activities(List.of(a1, a2))
                 .email("yaroslav@gmail.com")
                 .build();
         studentRepository.save(student3);
@@ -54,13 +66,13 @@ public class OoadSpringApplication implements CommandLineRunner {
                 .id("4")
                 .dep("Social")
                 .firstName("Maksym")
-                .skills(List.of("Python", "JS"))
+                .activities(List.of(a1))
                 .email("maksym@gmail.com")
                 .build();
         studentRepository.save(student4);
-        System.out.println(studentRepository.getById("4"));
+
         // works when StudentCriteriaRepositoryImpl 40 using names instead of ids
-        List list = studentRepository.search(StudentFilterDTO.builder().skillNames(List.of("Python")).build());
+        List list = studentRepository.search(StudentFilterDTO.builder().activities(List.of(a1)).build());
         for (Object o : list) {
             System.out.println(o);
         }

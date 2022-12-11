@@ -1,5 +1,6 @@
 package edu.kmaooad.dto;
 
+import edu.kmaooad.models.Activity;
 import lombok.Builder;
 import lombok.Data;
 
@@ -14,6 +15,5 @@ public class StudentFilterDTO {
     private String patronymic;
     private String dep;
     private String group;
-    private List<String> skillNames;
-    private List<String> skillIds;
+    private List<Activity> activities;
 }
