@@ -1,6 +1,6 @@
 package edu.kmaooad.models;
 
-import edu.kmaooad.enums.Status;
+import edu.kmaooad.enums.ActivityStatus;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -17,7 +17,7 @@ public class Activity {
     private String id;
 
     private String name;
-    private Enum<Status> status;
+    private Enum<ActivityStatus> status;
     private List<String> skills;
 
     @DBRef
