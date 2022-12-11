@@ -4,7 +4,7 @@ package edu.kmaooad.handlers;
 import edu.kmaooad.models.Message;
 import edu.kmaooad.utils.MessageParser;
 import edu.kmaooad.models.Response;
-import edu.kmaooad.service.RequestService;
+import edu.kmaooad.services.RequestService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

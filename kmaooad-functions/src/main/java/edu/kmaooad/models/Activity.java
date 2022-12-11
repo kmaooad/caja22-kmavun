@@ -6,6 +6,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.List;
 
@@ -20,8 +21,7 @@ public class Activity {
     private Enum<Status> status;
     private List<String> skills;
 
-    @DBRef
-    private Group group;
+    private String groupId;
 
     private String dep;
     private String org;

@@ -1,4 +1,4 @@
-package edu.kmaooad.service;
+package edu.kmaooad.services;
 
 import edu.kmaooad.interfaces.IService;
 import edu.kmaooad.models.Message;
