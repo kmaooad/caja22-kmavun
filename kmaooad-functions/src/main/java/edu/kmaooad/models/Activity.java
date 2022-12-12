@@ -18,7 +18,7 @@ public class Activity {
     private String id;
 
     private String name;
-    private Enum<Status> status;
+    private Status status;
     private List<String> skills;
 
     private String groupId;

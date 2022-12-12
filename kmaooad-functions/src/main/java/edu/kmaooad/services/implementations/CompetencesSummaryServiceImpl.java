@@ -7,6 +7,8 @@ import edu.kmaooad.repository.GroupRepository;
 import edu.kmaooad.repository.StudentRepository;
 import edu.kmaooad.services.interfaces.CompetencesSummaryService;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -38,6 +40,25 @@ public class CompetencesSummaryServiceImpl implements CompetencesSummaryService 
                 .map(studentId -> studentRepository.findById(studentId).orElseThrow())
                 .collect(Collectors.toList());
 
+//        List<List<List<String>>> skillsOfAllStudents = new ArrayList<>();
+//
+//        for (Student student : students) {
+//            List<List<String>> skillsOfStudent = student
+//                    .getActivities()
+//                    .stream()
+//                    .map(activityId -> activityRepository.findById(activityId).orElseThrow().getSkills())
+////                    .flatMap(List::stream)
+////                    .distinct()
+//                    .collect(Collectors.toList());
+//
+//            skillsOfAllStudents.add(skillsOfStudent);
+//        }
+//
+//        return skillsOfAllStudents
+//                .stream()
+//                .flatMap(List::stream)
+//                .flatMap(List::stream)
+//                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
         return students
                 .stream()
