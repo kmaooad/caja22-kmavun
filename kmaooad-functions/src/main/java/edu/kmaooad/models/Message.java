@@ -1,9 +1,8 @@
-package edu.kmaooad.model;
+package edu.kmaooad.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Data
 @AllArgsConstructor

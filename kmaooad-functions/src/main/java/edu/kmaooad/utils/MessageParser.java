@@ -1,6 +1,6 @@
 package edu.kmaooad.utils;
 
-import edu.kmaooad.model.Message;
+import edu.kmaooad.models.Message;
 import lombok.experimental.UtilityClass;
 import org.json.JSONObject;
 
