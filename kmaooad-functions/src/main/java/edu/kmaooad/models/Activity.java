@@ -17,7 +17,7 @@ public class Activity {
     private String id;
 
     private String name;
-    private Enum<ActivityStatus> status;
+    private ActivityStatus status;
     private List<String> skills;
 
     @DBRef

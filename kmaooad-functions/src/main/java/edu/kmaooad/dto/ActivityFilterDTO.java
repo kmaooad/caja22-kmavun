@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 public class ActivityFilterDTO {
     private String name;
-    private Enum<ActivityStatus> status;
+    private ActivityStatus status;
     private List<String> skills;
     private String dep;
     private String org;
