@@ -5,6 +5,6 @@ import edu.kmaooad.models.Activity;
 
 import java.util.List;
 
-public interface ActicityCriteriaRepository {
+public interface ActivityCriteriaRepository {
     List<Activity> search(ActivityFilterDTO filter);
 }

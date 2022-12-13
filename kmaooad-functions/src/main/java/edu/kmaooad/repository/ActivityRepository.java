@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ActivityRepository extends MongoRepository<Activity, String>, ActicityCriteriaRepository {
+public interface ActivityRepository extends MongoRepository<Activity, String>, ActivityCriteriaRepository {
     Optional<Activity> getById (String id);
     Optional<Activity> getActivitiesByGroup (Group group);
     Optional<Activity> findActivitiesByDep (String dep);

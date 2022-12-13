@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class ActivityCriteriaRepositoryImpl implements ActicityCriteriaRepository {
+public class ActivityCriteriaRepositoryImpl implements ActivityCriteriaRepository {
     private static final String NAME = "name";
     private static final String STATUS = "status";
     private static final String SKILLS = "skills";
