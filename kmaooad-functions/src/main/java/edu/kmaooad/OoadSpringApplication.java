@@ -5,6 +5,7 @@ import edu.kmaooad.models.Activity;
 import edu.kmaooad.models.Group;
 import edu.kmaooad.models.Student;
 import edu.kmaooad.repository.*;
+import edu.kmaooad.services.EmailServiceImpl;
 import edu.kmaooad.services.implementations.CompetencesSummaryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -33,6 +34,10 @@ public class OoadSpringApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        EmailServiceImpl mailService = new EmailServiceImpl();
+        mailService.sendSimpleMessage("maxdiach137@gmail.com","test","test");
+
         Activity frontend = Activity
                 .builder()
                 .id("1")
