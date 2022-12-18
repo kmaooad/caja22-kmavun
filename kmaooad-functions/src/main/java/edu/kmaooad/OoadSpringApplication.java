@@ -5,8 +5,8 @@ import edu.kmaooad.models.Activity;
 import edu.kmaooad.models.Group;
 import edu.kmaooad.models.Student;
 import edu.kmaooad.repository.*;
-import edu.kmaooad.services.EmailServiceImpl;
 import edu.kmaooad.services.implementations.CompetencesSummaryServiceImpl;
+import edu.kmaooad.task.ScheduledSending;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -34,9 +34,6 @@ public class OoadSpringApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
-        EmailServiceImpl mailService = new EmailServiceImpl();
-        mailService.sendSimpleMessage("maxdiach137@gmail.com","test","test");
 
         Activity frontend = Activity
                 .builder()
@@ -131,5 +128,13 @@ public class OoadSpringApplication implements CommandLineRunner {
         Map<String, Long> competencesSummary = service.getCompetencesSummaryForStudentGroup("1");
 
         competencesSummary.forEach((key, value) -> System.out.println(key + ": " + value));
+
+        ScheduledSending ss =new ScheduledSending(
+                groupRepository,
+                studentRepository,
+                activityRepository
+        );
+        ss.emailNotificationCompetences();
+
     }
 }
