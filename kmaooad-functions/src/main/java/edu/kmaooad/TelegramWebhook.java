@@ -8,7 +8,7 @@ import com.microsoft.azure.functions.HttpStatus;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
-import edu.kmaooad.model.Response;
+import edu.kmaooad.models.Response;
 import org.springframework.cloud.function.adapter.azure.FunctionInvoker;
 
 

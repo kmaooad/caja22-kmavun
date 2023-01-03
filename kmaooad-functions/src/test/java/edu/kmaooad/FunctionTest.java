@@ -5,7 +5,7 @@ import com.microsoft.azure.functions.HttpRequestMessage;
 import com.microsoft.azure.functions.HttpResponseMessage;
 import com.microsoft.azure.functions.HttpStatus;
 import edu.kmaooad.handlers.RequestHandler;
-import edu.kmaooad.service.RequestService;
+import edu.kmaooad.services.RequestService;
 import org.junit.jupiter.api.Test;
 import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
